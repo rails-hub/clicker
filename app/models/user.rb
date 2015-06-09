@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
 
   has_many :courses
+  has_many :user_courses
 
   before_save :add_search_terms
 
