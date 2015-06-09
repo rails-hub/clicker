@@ -1,0 +1,4 @@
+%ul(ng-controller="MenuCtrl" )
+  %li.current_page_item(ng-repeat="header in headers")
+    %a{:accesskey => "1", :href => "#", :title => ""}
+      {{header}}

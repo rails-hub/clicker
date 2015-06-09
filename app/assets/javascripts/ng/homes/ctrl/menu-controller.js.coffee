@@ -1,8 +1,8 @@
-angular.module('Telcoedge.controllers').controller 'MenuCtrl', ($scope)->
+angular.module('Clicker.controllers').controller 'MenuCtrl', ($scope)->
 
   $scope.init = ()->
-    $scope.siteName = "TelcoEdge"
-    $scope.headers = ["Home", "Test Numbers", "FAQ", "Our Services", "Contact Us", "About Us"]
+    $scope.siteName = "Clickers"
+    $scope.headers = ["Home", "Courses"]
 
 
   $scope.init()

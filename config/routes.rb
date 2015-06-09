@@ -1,6 +1,10 @@
 Clicker::Application.routes.draw do
 
   devise_for :users
-  root to: "home#index"
+
+  resources :homes
+
+
+  root to: "homes#index"
 
 end
