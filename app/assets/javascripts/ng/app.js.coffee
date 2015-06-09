@@ -1,23 +1,23 @@
-angular.module("Telcoedge.controllers", [])
-angular.module("Telcoedge.services", ['ngCookies'])
-angular.module("Telcoedge.factories", ['rails'])
-angular.module("Telcoedge.providers", [])
-angular.module("Telcoedge.widgets", [])
-angular.module("Telcoedge.directives", [])
-angular.module("Telcoedge.interceptors", [])
-angular.module("Telcoedge.filters", [])
+angular.module("Clicker.controllers", [])
+angular.module("Clicker.services", ['ngCookies'])
+angular.module("Clicker.factories", ['rails'])
+angular.module("Clicker.providers", [])
+angular.module("Clicker.widgets", [])
+angular.module("Clicker.directives", [])
+angular.module("Clicker.interceptors", [])
+angular.module("Clicker.filters", [])
 
-app = angular.module("Telcoedge",[
+app = angular.module("Clicker",[
                                     "ui.bootstrap.modal",
                                     "ui.bootstrap.pagination",
                                     "ui.bootstrap.popover",
                                     'ui.bootstrap.tpls',
-                                    "Telcoedge.controllers",
-                                    "Telcoedge.services",
-                                    "Telcoedge.widgets",
-                                    'Telcoedge.factories',
+                                    "Clicker.controllers",
+                                    "Clicker.services",
+                                    "Clicker.widgets",
+                                    'Clicker.factories',
                                     'ngAnimate',
-                                    'Telcoedge.directives',
+                                    'Clicker.directives',
                                     'templates'])
 
 

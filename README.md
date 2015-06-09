@@ -2,7 +2,7 @@
 STEPS
 ```
 git clone #{PATH}
-cd telcoedge
+cd clicker
 bundle
 rake db:create
 rake db:migrate

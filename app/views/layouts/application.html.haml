@@ -1,21 +1,23 @@
 !!!
 %html
   %head
-    %title= content_for?(:title) ? yield(:title) : "TelcoEdge"
+    %title= content_for?(:title) ? yield(:title) : "Clicker"
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" }
-    %meta{ :content => content_for?(:description) ? yield(:description) : "Telcoedge", :name => "description" }
+    %meta{ :content => content_for?(:description) ? yield(:description) : "Clicker", :name => "description" }
     %link{ :href => "https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,300,700", :rel => "stylesheet", :type => "text/css" }
     = stylesheet_link_tag :application, :media => "all"
     = javascript_include_tag :application
     = csrf_meta_tags
     = yield(:head)
 
-  %body(ng-app="Telcoedge")
+  %body(ng-app="Clicker")
     #wrapper
       #header-wrapper
         #header.container
           = render '/layouts/header'
         #menu.container
+          - flash.each do |key, value|
+            %div{:class => "alert alert-#{key}"}= value
           = render '/layouts/menu'
       #main{ :role => "main" }
         = yield
