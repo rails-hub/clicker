@@ -1,0 +1,46 @@
+# Created by http://www.gitignore.io
+
+### Rails ###
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/public/images
+/public/attachments
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+.idea/
+*.DS_Store
+
+### DotEnv gem ###
+#.env
+
+# TODO Comment out these rules if you are OK with secrets being uploaded to the repo
+# config/initializers/secret_token.rb
+# config/secrets.yml
+
+## Environment normalisation:
+/.bundle
+/vendor/bundle
+
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+# .elasticbeanstalk/
+
+# Elastic Beanstalk Files
+!.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+
+#other
+.env
+.project
+.DS_Store

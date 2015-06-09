@@ -1,0 +1,25 @@
+.skype a.thickbox {
+    display: block;
+    width: 80%;
+    height: 40px;
+    padding: 12px 0 0 0;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 0 0;
+    border-bottom: 1px solid #dadada;
+    background: transparent;
+    -webkit-transition: 1s all ease-in-out;
+    -moz-transition: 1s all ease-in-out;
+    -o-transition: 1s all ease-in-out;
+    -ms-transition: 1s all ease-in-out;
+    transition: 1s all ease-in-out;
+}
+
+.skype a.thickbox span {
+    float: left;
+}
+
+.skype a.thickbox img {
+    float: right;
+    height: 22px;
+}

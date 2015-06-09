@@ -1,0 +1,31 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  pool: 5 # default puma setting
+  port: 5432
+
+
+development:
+  <<: *default
+  database: <%= ENV['DATABASE_NAME'] %>_dev
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+
+test:
+  <<: *default
+  database: <%= ENV['DATABASE_NAME'] %>_test
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
+
+production:
+  <<: *default
+  database: <%= ENV['DATABASE_NAME'] %>_prod
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOSTNAME'] %>
+  port: <%= ENV['DATABASE_PORT'] %>
