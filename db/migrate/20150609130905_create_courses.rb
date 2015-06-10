@@ -13,7 +13,7 @@ class CreateCourses < ActiveRecord::Migration
       t.timestamps
     end
     add_index  :courses, :title
-    add_index  :courses, :course_id
-    add_index  :users, :search_terms
+    add_index  :courses, :courseId
+    add_index  :courses, :search_terms
   end
 end

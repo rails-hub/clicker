@@ -11,12 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609121744) do
+ActiveRecord::Schema.define(version: 20150609132716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "uuid-ossp"
+
+  create_table "courses", force: true do |t|
+    t.string   "courseId"
+    t.string   "title"
+    t.integer  "user_id"
+    t.text     "search_terms"
+    t.boolean  "is_registered", default: true
+    t.integer  "limit",         default: 1000
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "courses", ["courseId"], name: "index_courses_on_courseId", using: :btree
+  add_index "courses", ["search_terms"], name: "index_courses_on_search_terms", using: :btree
+  add_index "courses", ["title"], name: "index_courses_on_title", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -28,6 +45,13 @@ ActiveRecord::Schema.define(version: 20150609121744) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "user_courses", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
