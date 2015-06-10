@@ -9,7 +9,7 @@ class Course < ActiveRecord::Base
   validates :courseId, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :date_cannot_be_in_past
+  validate :date_cannot_be_in_past
 
   before_save :add_search_terms
 
