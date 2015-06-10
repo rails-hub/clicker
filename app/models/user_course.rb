@@ -6,7 +6,7 @@ class UserCourse < ActiveRecord::Base
   validates :user_id, presence: true
   validates :course_id, presence: true
 
-  validates :can_be_registered
+  validate :can_be_registered
 
 
   private
