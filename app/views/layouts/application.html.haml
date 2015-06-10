@@ -10,7 +10,7 @@
     = csrf_meta_tags
     = yield(:head)
 
-  %body(ng-app="Clicker")
+  %body(ng-app="Clicker"){:id => "#{params[:controller]}"}
     #wrapper
       #header-wrapper
         #header.container
@@ -19,7 +19,7 @@
           - flash.each do |key, value|
             %div{:class => "alert alert-#{key}"}= value
           = render '/layouts/menu'
-      #main{ :role => "main" }
+      #main.container{ :role => "main" }
         = yield
 
     #footer
