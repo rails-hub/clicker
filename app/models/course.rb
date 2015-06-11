@@ -5,8 +5,8 @@ class Course < ActiveRecord::Base
 
 
   validates :user_id, presence: true
-  validates :title, presence: true
-  validates :courseId, presence: true
+  validates :title, presence: true, :uniqueness => true
+  validates :courseId, presence: true, :uniqueness => true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :date_cannot_be_in_past
@@ -17,12 +17,13 @@ class Course < ActiveRecord::Base
   private
 
   def add_search_terms
-    self.search_terms = self.course_id.downcase + ' ' + self.title.downcase
+    self.search_terms = self.courseId.downcase + ' ' + self.title.downcase
   end
 
   def date_cannot_be_in_past
     errors.add(:start_date, "start date can't be in the past") if self.start_date < Date.today
     errors.add(:end_date, "end date can't be in the past") if self.end_date < Date.today
   end
+
 
 end

@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap/tab
+//= require admin/admins
 //= require skypeCheck
+//= require bootstrap-datepicker
 //= require holder
 //= require sugar
 //= require jquery_nested_form
@@ -32,3 +34,6 @@
 //= require angular-cookies
 //= require ng/app
 //= require_tree .
+
+
+

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150609132716) do
     t.datetime "updated_at"
   end
 
-  add_index "courses", ["courseId"], name: "index_courses_on_courseId", using: :btree
+  add_index "courses", ["courseId"], name: "index_courses_on_courseId", unique: true, using: :btree
   add_index "courses", ["search_terms"], name: "index_courses_on_search_terms", using: :btree
   add_index "courses", ["title"], name: "index_courses_on_title", using: :btree
 

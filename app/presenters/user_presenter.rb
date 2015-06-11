@@ -1,0 +1,3 @@
+class UserPresenter < SimpleDelegator
+
+end

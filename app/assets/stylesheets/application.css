@@ -9,10 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require home/style
+ *= require home/header-styles
  *= require home/contact-us
  *= require home/offers
  *= require common/fonts
  *= require common/icons
  *= require homes
+ *= require admin/admins
+ *= require admin/admins_menu
  *= require bootstrap
  */

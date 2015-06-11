@@ -1,0 +1,54 @@
+= render "layouts/admin_menu"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1.page-header Dashboard
+  .row
+    .col-lg-3.col-md-6
+      .panel.panel-primary
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-user.fa-fw.fa-3x
+            .col-xs-9.text-right
+              .huge
+                = @students.count
+              %div Total Students
+        %a{:href => "/admin/students"}
+          .panel-footer
+            %span.pull-left View Details
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-3.col-md-6
+      .panel.panel-green
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-user.fa-fw.fa-3x
+            .col-xs-9.text-right
+              .huge
+                = @teachers.count
+              %div Total Teachers
+        %a{:href => "/admin/teachers"}
+          .panel-footer
+            %span.pull-left View Details
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix
+    .col-lg-3.col-md-6
+      .panel.panel-green
+        .panel-heading
+          .row
+            .col-xs-3
+              %i.fa.fa-user.fa-fw.fa-3x
+            .col-xs-9.text-right
+              .huge
+                = @courses.count
+              %div Total Courses
+        %a{:href => "/admin/courses"}
+          .panel-footer
+            %span.pull-left View Details
+            %span.pull-right
+              %i.fa.fa-arrow-circle-right
+            .clearfix

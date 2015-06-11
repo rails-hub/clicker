@@ -11,9 +11,14 @@
         = image_tag("common/logo.png", height: '20px', width: '20px')
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
-      %ul.nav.navbar-nav(ng-repeat = "header in headers")
-        %li
-          %a{:href => "#"} {{header}}
+      - if user_signed_in?
+        %ul.nav.navbar-nav
+          %li(ng-repeat = "header in headers")
+            %a{:href => "#"} {{header}}
+          - current_user.has_role? :admin
+          %li
+            %a{:href => "/admin"} Admin
+
       %form.navbar-form.navbar-left{:role => "search"}
         .form-group
           %input.form-control{:placeholder => "Search", :type => "text"}/

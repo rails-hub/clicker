@@ -1,0 +1,29 @@
+%nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
+  .navbar-default.sidebar{:role => "navigation"}
+    .sidebar-nav.navbar-collapse
+      %ul#side-menu.nav
+        %li
+          %a{:href => "/admin"}
+            %i.fa.fa-dashboard.fa-fw
+            Dashboard
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-bar-chart-o.fa-fw
+            Students
+          %ul.nav.nav-second-level
+            %li
+              %a{:href => "/admin/students"} All Students
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-bar-chart-o.fa-fw
+            Teachers
+          %ul.nav.nav-second-level
+            %li
+              %a{:href => "/admin/teachers"} All Teachers
+        %li
+          %a{:href => "#"}
+            %i.fa.fa-bar-chart-o.fa-fw
+            Courses
+          %ul.nav.nav-second-level
+            %li
+              %a{:href => "/admin/courses"} All Courses
