@@ -6,6 +6,8 @@
         .panel-heading
           %i.fa.fa-bar-chart-o.fa-fw
           All Teachers
+          %span
+            = link_to 'Add New', new_admin_teacher_path, :class => "btn btn-primary btn-sm"
         / /.panel-heading
         .panel-body
           .row
@@ -27,7 +29,7 @@
                         %td
                           = teacher.name
                         %td
-                          = teacher.email
+                          = teacher.email.blank? ? teacher.username : teacher.email
                         %td
                           = teacher.joined_at
                         %td

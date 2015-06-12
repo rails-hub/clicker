@@ -4,12 +4,26 @@ class Admin::StudentsController < Admin::AdminsController
     @students = User.with_role(:student, :any).decorate
   end
 
-  def edit
-
+  def new
+    @student = User.new
   end
 
-  def destroy
+  def edit
+    @student = User.find(params[:id])
+  end
 
+
+  def destroy
+    @student = User.find(params[:id])
+    @student.destroy
+    flash[:success] = "Student Deleted Successfully"
+    redirect_to admin_students_path
+  end
+
+  private
+
+  def student_params
+    params.require(:user).permit(:first_name,:last_name, :email, :username, :password, :con)
   end
 
 end

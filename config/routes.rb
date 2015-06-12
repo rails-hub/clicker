@@ -1,6 +1,10 @@
 Clicker::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users,:skip => :registerable
+
+  devise_scope :user do
+    match '/admin/users', to: 'admin/users#create', via: :post
+  end
 
   resources :homes
 
@@ -8,7 +12,6 @@ Clicker::Application.routes.draw do
 
   resources :students
 
-  resources :teachers
 
   namespace :admin do
 
@@ -21,9 +24,14 @@ Clicker::Application.routes.draw do
 
     resources :teachers
 
+    resources :users
+
+
   end
 
 
   root to: "homes#index"
+
+
 
 end
