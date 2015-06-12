@@ -12,6 +12,7 @@ Clicker::Application.routes.draw do
 
   resources :students
 
+  resources :teachers
 
   namespace :admin do
 
