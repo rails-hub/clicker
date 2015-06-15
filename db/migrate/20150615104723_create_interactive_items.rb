@@ -7,6 +7,6 @@ class CreateInteractiveItems < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :interactive_items, :course
+    add_index :interactive_items, :course_id
   end
 end
