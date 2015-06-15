@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 
   has_many :courses
   has_many :user_courses, dependent: :destroy
+  has_many :interactive_items, dependent: :destroy
+  has_many :attendances
+  has_many :quizzes
+  has_many :polls
 
   before_save :add_search_terms
 

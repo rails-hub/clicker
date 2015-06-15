@@ -15,19 +15,24 @@
         %ul.nav.navbar-nav
           %li(ng-repeat = "header in headers")
             %a{:href => "#"} {{header}}
-          - current_user.has_role? :admin
-          %li
-            %a{:href => "/admin"} Admin
+          - if current_user.has_role? :admin
+            %li
+              %a{:href => "/admin"} Admin
 
       %form.navbar-form.navbar-left{:role => "search"}
         .form-group
           %input.form-control{:placeholder => "Search", :type => "text"}/
       %ul.nav.navbar-nav.navbar-right
-        %li
-          - if user_signed_in?
+
+        - if user_signed_in?
+          %li
+            = link_to "#{current_user.decorate.name}", edit_profile_path(current_user)
+
+          %li
             = link_to('Logout', destroy_user_session_path, :method => :delete)
-          - else
-            = link_to('Login', new_user_session_path)
+
+        - else
+          = link_to('Login', new_user_session_path)
 
     / /.navbar-collapse
   / /.container

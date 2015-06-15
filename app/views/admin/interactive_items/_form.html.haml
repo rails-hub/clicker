@@ -1,0 +1,14 @@
+.card.card-container
+  %h2
+    = @item.new_record? ? "Add Interactive Item" :  "Edit Interactive Item"
+  = simple_form_for([:admin, @course, @item], :html => {:class => 'form-signin'}) do |f|
+    = f.error_notification
+    .form-group
+      = f.select :interactable_type, InteractiveItem::INTERACTIVE_TYPES  , autofocus: true, :class => 'form-control'
+      %label
+        Date*
+      = f.text_field :for_date, required: true, :class => "datepicker", :datepicker => ""
+
+    .form-actions
+      = f.button :submit, "Submit"
+

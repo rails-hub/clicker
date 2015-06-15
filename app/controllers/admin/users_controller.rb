@@ -1,4 +1,5 @@
 class Admin::UsersController < Admin::AdminsController
+  skip_before_filter :is_admin, :only => [:update]
 
   def create
     user = User.new(user_params)
@@ -30,6 +31,9 @@ class Admin::UsersController < Admin::AdminsController
         redirect_to admin_students_path
       elsif type_params[:type] == "teacher"
         redirect_to admin_teachers_path
+      else
+        sign_in(:user, user)
+        redirect_to edit_profile_path(user)
       end
     else
       flash[:danger] = user.errors.full_messages
@@ -37,6 +41,9 @@ class Admin::UsersController < Admin::AdminsController
         redirect_to new_admin_student_path
       elsif type_params[:type] == "teacher"
         redirect_to new_admin_teacher_path
+      else
+        sign_in(:user, user)
+        redirect_to edit_profile_path(user)
       end
     end
   end

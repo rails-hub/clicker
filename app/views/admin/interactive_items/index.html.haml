@@ -5,9 +5,9 @@
       .panel.panel-default
         .panel-heading
           %i.fa.fa-bar-chart-o.fa-fw
-          All Courses
+          All Interactive Items
           %span
-            = link_to 'Add New', new_admin_course_path, :class => "btn btn-primary btn-sm"
+            = link_to 'Add New', new_admin_course_interactive_item_path, :class => "btn btn-primary btn-sm"
         / /.panel-heading
         .panel-body
           .row
@@ -18,18 +18,17 @@
                     %tr
                       %th #
                       %th Title
-                      -#%th ID
+                      %th Created By
                       %th Actions
                   %tbody
-                    - @courses.each_with_index do |course, index|
+                    - @items.each_with_index do |item, index|
                       %tr
                         %td
                           = index + 1
                         %td
-                          = course.title
-                        -#%td
-                        -#  = course.courseId
+                          = item.interactable_type
                         %td
-                          = link_to("View Interactive Items", admin_course_interactive_items_path(course))
-                          = link_fa_to("edit", "", edit_admin_course_path(course))
-                          = link_to 'Delete',url_for(action: :destroy,id: course.id),method: :delete, data: {confirm: "Are you sure?"}
+                          = item.user.decorate.name
+                        %td
+                          = link_fa_to("edit", "", edit_admin_course_interactive_item_path(course))
+                          = link_to 'Delete',url_for(action: :destroy,id: item.id),method: :delete, data: {confirm: "Are you sure?"}

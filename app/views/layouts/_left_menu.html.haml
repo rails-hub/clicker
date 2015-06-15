@@ -1,0 +1,6 @@
+- if current_user.has_role? :student
+  = render "layouts/students_menu"
+- elsif current_user.has_role? :teacher
+  = render "layouts/teachers_menu"
+- elsif current_user.has_role? :admin
+  = render "layouts/admin_menu"

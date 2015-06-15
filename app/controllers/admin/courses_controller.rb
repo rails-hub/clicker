@@ -1,4 +1,6 @@
 class Admin::CoursesController < Admin::AdminsController
+  skip_before_filter :is_admin
+  before_filter :is_admin_or_teacher
 
   def index
     @courses = Course.all

@@ -1,0 +1,3 @@
+class InteractiveItemPresenter < SimpleDelegator
+
+end

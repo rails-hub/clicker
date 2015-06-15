@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609136140) do
+ActiveRecord::Schema.define(version: 20150615121140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "uuid-ossp"
+
+  create_table "attendances", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "interactive_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "courses", force: true do |t|
     t.string   "courseId"
@@ -34,6 +42,42 @@ ActiveRecord::Schema.define(version: 20150609136140) do
   add_index "courses", ["courseId"], name: "index_courses_on_courseId", unique: true, using: :btree
   add_index "courses", ["search_terms"], name: "index_courses_on_search_terms", using: :btree
   add_index "courses", ["title"], name: "index_courses_on_title", using: :btree
+
+  create_table "interactive_items", force: true do |t|
+    t.integer  "interactable_id"
+    t.string   "interactable_type"
+    t.integer  "course_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "for_date"
+  end
+
+  add_index "interactive_items", ["for_date"], name: "index_interactive_items_on_for_date", using: :btree
+
+  create_table "polls", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "interactive_item_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "polls", ["title"], name: "index_polls_on_title", using: :btree
+
+  create_table "quizzes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.integer  "interactive_item_id"
+    t.string   "title"
+    t.string   "type"
+    t.integer  "time_limit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quizzes", ["title"], name: "index_quizzes_on_title", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

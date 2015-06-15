@@ -12,8 +12,12 @@ class UserCourse < ActiveRecord::Base
   private
 
   def can_be_registered
-    errors.add(:is_registered, "You are already registered in this course") unless self.where('user_id = ? and course_id = ? and is_registered = ?', self.user_id, self.course_id, true).blank?
-    errors.add(:is_registered, "Course Limit Reached") if self.where('course_id = ? and is_registered = ?', self.course_id, true).count >= Course.where('course_id = ?', self.course_id).limit
+    errors.add(:course_id, "You are already registered in this course") unless UserCourse.where('user_id = ? and course_id = ?', self.user_id, self.course_id).blank?
+    if Course.where('id = ?', self.course_id).first
+      errors.add(:course_id, "Course Limit Reached") if UserCourse.where('course_id = ?', self.course_id).count >= Course.where('id = ?', self.course_id).first.limit
+    else
+      errors.add(:course_id, "No Such Course Exist")
+    end
   end
 
 end

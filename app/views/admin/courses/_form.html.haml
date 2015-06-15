@@ -5,14 +5,14 @@
     = f.error_notification
     .form-group
       = f.input :title, required: true, autofocus: true, :class => 'form-control'
-      = f.input :courseId, required: true, :class => 'form-control'
+      -#= f.input :courseId, required: true, :class => 'form-control'
       = f.input :limit, required: true, :class => 'form-control'
-      %label
-        Start Date*
-      = f.text_field :start_date, required: true, :class => "datepicker", :datepicker => ""
-      %label
-        End Date*
-      = f.text_field :end_date, required: true, :class => "datepicker", :datepicker => ""
+      -#%label
+        -#Start Date*
+      -#= f.text_field :start_date, required: true, :class => "datepicker", :datepicker => ""
+      -#%label
+      -#  End Date*
+      -#= f.text_field :end_date, required: true, :class => "datepicker", :datepicker => ""
     .form-actions
       = f.button :submit, "Submit"
 

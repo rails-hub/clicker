@@ -1,13 +1,14 @@
-= render "layouts/admin_menu"
-#page-wrapper
+= render "layouts/left_menu"
+#page-wrapper(ng-controller="CourseCtrl")
   .row
     .col-lg-12
       .panel.panel-default
         .panel-heading
           %i.fa.fa-bar-chart-o.fa-fw
           All Courses
-          .right
-            Add New
+          - if can_create_course(current_user)
+            %span
+              = link_to 'Add New', new_admin_course_path, :class => "btn btn-primary btn-sm"
         / /.panel-heading
         .panel-body
           .row
@@ -18,7 +19,7 @@
                     %tr
                       %th #
                       %th Title
-                      %th ID
+                      -#%th ID
                       %th Actions
                   %tbody
                     - @courses.each_with_index do |course, index|
@@ -27,8 +28,12 @@
                           = index + 1
                         %td
                           = course.title
+                        -#%td
+                        -#  = course.courseId
                         %td
-                          = course.courseId
-                        %td
-                          = link_fa_to("edit", "", edit_admin_course_path(course))
-                          = link_to 'Delete',url_for(action: :destroy,id: course.id),method: :delete, data: {confirm: "Are you sure?"}
+                          - if course.decorate.my_course(current_user)
+                            Added
+                          - else
+                            %a(href="javascript:" ng-click="add_course(#{course.id})" id="addCourse_#{course.id}")
+                              Add
+

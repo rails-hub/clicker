@@ -1,0 +1,15 @@
+.card.card-container
+  %h2
+    = "Edit Profile"
+  = simple_form_for([:admin, @profile], :html => {:class => 'form-signin'}) do |f|
+    = f.error_notification
+    .form-group
+      = f.input :first_name, required: true, autofocus: true, :class => 'form-control'
+      = f.input :last_name, required: true,:class => 'form-control'
+      = f.input :username, required: true, :class => 'form-control'
+      = f.input :email, :class => 'form-control'
+      = f.input :password, required: true, :class => 'form-control'
+      = f.input :password_confirmation, required: true, :class => 'form-control'
+    .form-actions
+      = f.button :submit, "Submit"
+
