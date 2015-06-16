@@ -4,11 +4,19 @@
   = simple_form_for([:admin, @course, @item], :html => {:class => 'form-signin'}) do |f|
     = f.error_notification
     .form-group
-      = f.select :interactable_type, InteractiveItem::INTERACTIVE_TYPES  , autofocus: true, :class => 'form-control'
+      - if @item.new_record?
+        = f.select :interactable_type, options_for_select(InteractiveItem::INTERACTIVE_TYPES), {} ,:onchange => "select_item(this)", :class => 'form-control'
       %label
         Date*
       = f.text_field :for_date, required: true, :class => "datepicker", :datepicker => ""
-
+      #quiz_or_poll(style="display: #{@item.new_record? ? 'none': @item.interactable_type === 'Quiz' || @item.interactable_type === 'Poll' ? 'block' : 'none' } ")
+        %label
+          Title*
+        = text_field_tag "interactive_item[title]", @item.new_record? ? nil : item_title(@item.interactable) ,required: check_title_required(@item.interactable, @item.new_record?), :class => 'form-control'
+      #quiz(style="display: #{@item.new_record? ? 'none': @item.interactable_type == 'Quiz' ? 'block' : 'none' } ")
+        %label
+          Time Limit
+        = text_field_tag "interactive_item[time_limit]", @item.new_record? ? nil : item_time_limit(@item.interactable), :class => 'form-control'
     .form-actions
       = f.button :submit, "Submit"
 

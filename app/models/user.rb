@@ -12,9 +12,10 @@ class User < ActiveRecord::Base
   has_many :courses
   has_many :user_courses, dependent: :destroy
   has_many :interactive_items, dependent: :destroy
-  has_many :attendances
-  has_many :quizzes
-  has_many :polls
+  has_many :attendances, dependent: :destroy
+  has_many :quizzes, dependent: :destroy
+  has_many :polls, dependent: :destroy
+  has_many :user_attendances, dependent: :destroy
 
   before_save :add_search_terms
 
@@ -35,6 +36,14 @@ class User < ActiveRecord::Base
       else
         where(username: conditions[:username]).first
       end
+    end
+  end
+
+  def is_present(user_attendances, user)
+    if user_attendances.where('user_id = ?', user.id).blank?
+      return false
+    else
+      return true
     end
   end
 

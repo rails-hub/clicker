@@ -1,0 +1,33 @@
+= render "layouts/admin_menu"
+#page-wrapper
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          %i.fa.fa-bar-chart-o.fa-fw
+          = @item.interactable_type + " For " + @item.for_date.to_s
+        .panel-body
+          .row
+            .col-lg-12
+              .table-responsive
+                %table.table.table-bordered.table-hover.table-striped
+                  %thead
+                    %tr
+                      %th #
+                      %th Course Title
+                      %th Student Name
+                      %th Student Username
+                      %th Is Present
+                  %tbody
+                    - @user_courses.each_with_index do |user_courses, index|
+                      %tr
+                        %td
+                          = index + 1
+                        %td
+                          = user_courses.course.title
+                        %td
+                          = user_courses.user.decorate.name
+                        %td
+                          = user_courses.user.username
+                        %td
+                          = check_box_tag 'present', false, User.new.is_present(@user_attendances, user_courses.user), :onclick => "mark_present(this, #{@item.id}, #{@attendance.id}, #{user_courses.user_id}, #{@course.id})"

@@ -30,5 +30,5 @@
                         %td
                           = item.user.decorate.name
                         %td
-                          = link_fa_to("edit", "", edit_admin_course_interactive_item_path(course))
+                          = link_to("edit", edit_admin_course_interactive_item_path(:id => item))
                           = link_to 'Delete',url_for(action: :destroy,id: item.id),method: :delete, data: {confirm: "Are you sure?"}
